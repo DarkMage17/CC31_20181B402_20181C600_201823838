@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/imagenes"/>
+    <qresource prefix="/\imagenes"/>
+    <qresource prefix="/">
+        <file>Imagenes/0c3b3adb1a7530892e55ef36d3be6cb8.png</file>
+        <file>Imagenes/4a66f333332919.56a84344447ec.jpg</file>
+        <file>Imagenes/8fe706ca6824b0cbcae8e7d356942ed9.jpg</file>
+        <file>Imagenes/279dcfa578638f1cfd3b026d43ddfd39.jpg</file>
+        <file>Imagenes/c347f115-012f-4bde-86e6-ecd3ee22aefe.png</file>
+        <file>Imagenes/logo.png</file>
+        <file>Imagenes/PicsArt_09-30-11.27.32 (1).jpg</file>
+        <file>Imagenes/PicsArt_09-30-11.48.05.png</file>
+        <file>Imagenes/PicsArt_10-01-01.02.07.png</file>
+        <file>Imagenes/PicsArt_10-01-01.11.55.png</file>
+        <file>Imagenes/PicsArt_10-01-01.32.46.jpg</file>
+        <file>Imagenes/PicsArt_10-01-01.35.42.jpg</file>
+        <file>Imagenes/PicsArt_10-01-12.03.23.png</file>
+        <file>Imagenes/PicsArt_10-01-12.08.11.png</file>
+    </qresource>
+</RCC>
