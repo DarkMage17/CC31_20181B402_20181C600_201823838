@@ -47,6 +47,7 @@ public:
 private slots:
     void AgregarUsuarioBST(Usuario u);
     void AgregarPubsBST(Post p);
+    void aea();
     void CargarUsuarios();
     void CargarPubs();
     void CargarComentarios();
