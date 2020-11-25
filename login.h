@@ -67,5 +67,6 @@ private slots:
 private:
     Ui::Login *ui;
     Principal *uiPrincipal;
+    int prueba;
 };
 #endif // LOGIN_H
