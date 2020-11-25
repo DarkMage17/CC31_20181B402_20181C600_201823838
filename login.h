@@ -41,7 +41,7 @@ public:
     BST<Post, QString>* BST_titulo;
     //proximamente mas
     QString usuarioG, amigoPerfil;
-    QString path = "D:/Projects/RedSocial/Data/";
+    QString path = "C:/Users/usuario/Desktop/Git";
     QVector<Comentario> comentarios;
 
 private slots:
