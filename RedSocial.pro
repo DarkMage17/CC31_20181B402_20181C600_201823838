@@ -12,6 +12,7 @@ SOURCES += \
     main.cpp \
     login.cpp \
     post.cpp \
+    publicacionform.cpp \
     usuario.cpp
 
 HEADERS += \
@@ -22,10 +23,12 @@ HEADERS += \
     interaccion.h \
     login.h \
     post.h \
+    publicacionform.h \
     usuario.h
 
 FORMS += \
-    login.ui
+    login.ui \
+    publicacionform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

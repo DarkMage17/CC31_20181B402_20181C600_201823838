@@ -7,6 +7,7 @@ class Post
 {
 public:
     Post(int idPublicacion,int idUser, QString Titulo,QString texto, QDate fechaPublicacion, int likes);
+    Post();
     int getIdPub();
     int getIdUsers();
     int getLikes();
@@ -24,7 +25,6 @@ public:
        return fill_space(this->titulo ,35) + "|" + fill_space(this->fechaPublicacion.toString("yyyy-MM-dd")) + "|" + fill_space(this -> a = QString::number(likes));
     }
 protected:
-private:
     int idPublicacion;
     int idUser;
     int likes;

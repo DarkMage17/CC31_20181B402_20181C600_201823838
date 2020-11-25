@@ -5,7 +5,7 @@ class interaccion : public Post
 {
 private:
 QString fecha;
-int shared;
+bool shared;
 };
 
 #endif // INTERACCION_H

@@ -6,7 +6,7 @@
 #include "QMessageBox"
 #include "QTextStream"
 #include "ListaSimple.h"
-#include "QRegExp"
+
 
 bool inversed = false;
 Login::Login(QWidget *parent)
@@ -26,7 +26,7 @@ Login::Login(QWidget *parent)
     this->BST_fechaPub=new BST<Post,QDate>([](Post p){return p.getFechaPub();});
     this->BST_texto=new BST<Post,QString>([](Post p){return p.getTexto();});
     this->BST_titulo=new BST<Post,QString>([](Post p){return p.getTitulo();});
-    //CargarUsuarios();
+    CargarUsuarios();
 }
 
 Login::~Login()
@@ -71,6 +71,23 @@ void Login::CargarPubs()
     }
 }
 
+void Login::CargarComentarios()
+{
+    QFile file(path + "comment.tsv");
+    if(file.open(QIODevice::ReadOnly)){ //WriteOnly
+        QTextStream in(&file); // in << palabras[1] << "\n";
+        in.setCodec("UTF-8");
+        while(!in.atEnd()){
+            QString linea = in.readLine();
+            QStringList palabras = linea.split("\t");
+            QDate date = QDate::fromString(palabras[2],"yyyy-MM-dd");
+            Comentario *c = new Comentario(palabras[0].toInt(),palabras[1].toInt(),date,palabras[3]);
+            comentarios.append(*c);
+        }
+        file.close();
+    }
+}
+
 void Login::AgregarUsuarioBST(Usuario u)
 {
     this->BST_id->add(u);
@@ -92,11 +109,11 @@ void Login::AgregarPubsBST(Post p)
 void Login::AgregarPub()
 {
     int idPub = 1;
-    int idUser = 1;
+    int idUser = logueado->data.getId();
     int numLikes = 1;
     QString desc = "";
-    QDate fechaPub =QDate::currentDate();
-    QString titulo=ui->EditPublis->toPlainText();
+    QDate fechaPub = QDate::currentDate();
+    QString titulo = ui->EditPublis->toPlainText();
     Post *p=new Post(idPub,idUser,titulo,desc,fechaPub,numLikes);
     publicaciones.append(*p);
     AgregarPubsBST(*p);
@@ -121,7 +138,7 @@ void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
     else    BST_likes->inorder(ui->listWidget);
     inversed = !inversed;
     ui->listWidget->clear();
-    for(int i=0;i< publicaciones.Size();i++)
+    for(int i=0;i< 50;i++)
     {
         ui->listWidget->addItem(publicaciones.GetPos(i).data.getTitulo());
     }
@@ -129,15 +146,14 @@ void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
 
 void Login::on_pushButton_4_clicked()
 {
-    CargarPubsHomePage();
+    //CargarPubsHomePage();
 }
-
 void Login::on_B_Seguir_clicked()
 {
     QString valor = ui->lineEdit->text();
     ui->LUsuariosGlob->clear();
     Lista<Usuario> u = usuarios.filtrar(valor);
-    for(int i=0;i<u.Size();i++)
+    for(int i=0;i< 50;i++)
         ui->LUsuariosGlob->addItem(u.GetPos(i).data.getNombre());
 }
 
@@ -401,3 +417,4 @@ void Login::on_pushButton_2_clicked()
     ui->LaberUserPerfil_2->setText("My Posts");
 }
 */
+

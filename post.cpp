@@ -9,6 +9,11 @@ Post::Post(int idPublicacion, int idUser, QString Titulo,QString texto, QDate fe
     this->likes=likes;
     this->idUser=idUser;
 }
+
+Post::Post()
+{
+
+}
 int Post::getIdPub()
 {
     return this->idPublicacion;
