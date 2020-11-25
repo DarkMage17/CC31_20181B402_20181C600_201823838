@@ -67,5 +67,9 @@ private slots:
 private:
     Ui::Login *ui;
     Principal *uiPrincipal;
+    enum Columna
+    {
+        ID, TITULO, FECHA, LIKES
+    };
 };
 #endif // LOGIN_H

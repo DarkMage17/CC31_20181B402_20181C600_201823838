@@ -146,7 +146,23 @@ void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
 
 void Login::on_pushButton_4_clicked()
 {
+    int fila;
+    for(int i=0;i<publicaciones.Size();i++)
+    {
+        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+        fila = ui->tableWidget->rowCount()-1;
+        ui->tableWidget->setItem(fila, ID, new QTableWidgetItem(QString::number(publicaciones.GetPos(i).data.getIdPub())));
+        ui->tableWidget->setItem(fila, TITULO, new QTableWidgetItem(publicaciones.GetPos(i).data.getTitulo()));
+    }
     //CargarPubsHomePage();
+    /*ui->LUsuariosGlob->clear();
+    if(inversed) BST_id->postorder(ui->listWidget);
+    else    BST_id->inorder(ui->listWidget);
+    inversed = !inversed;
+    for(int i=0;i<usuarios.Size();i++)
+    {
+
+    }*/
 }
 void Login::on_B_Seguir_clicked()
 {
