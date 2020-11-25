@@ -71,5 +71,6 @@ private:
     {
         ID, TITULO, FECHA, LIKES
     };
+    int prueba;
 };
 #endif // LOGIN_H
