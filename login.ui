@@ -479,7 +479,7 @@ background-color: rgb(255, 255, 255);
           <widget class="QPushButton" name="btnPost">
            <property name="geometry">
             <rect>
-             <x>540</x>
+             <x>710</x>
              <y>180</y>
              <width>80</width>
              <height>25</height>
@@ -638,19 +638,6 @@ background-color: rgb(255, 255, 255);
             <bool>true</bool>
            </property>
           </widget>
-          <widget class="QPushButton" name="pushButton_4">
-           <property name="geometry">
-            <rect>
-             <x>140</x>
-             <y>180</y>
-             <width>80</width>
-             <height>25</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>PushButton</string>
-           </property>
-          </widget>
           <widget class="QListWidget" name="listWidget">
            <property name="geometry">
             <rect>
@@ -700,22 +687,58 @@ background-color: rgb(255, 255, 255);</string>
             <string>Title</string>
            </property>
           </widget>
-          <widget class="QTableWidget" name="tableWidget">
+          <widget class="QLineEdit" name="ShowN">
            <property name="geometry">
             <rect>
-             <x>210</x>
-             <y>240</y>
-             <width>501</width>
-             <height>291</height>
+             <x>130</x>
+             <y>0</y>
+             <width>113</width>
+             <height>24</height>
             </rect>
            </property>
-           <property name="columnCount">
-            <number>4</number>
+          </widget>
+          <widget class="QLineEdit" name="ShowG">
+           <property name="geometry">
+            <rect>
+             <x>130</x>
+             <y>40</y>
+             <width>431</width>
+             <height>24</height>
+            </rect>
            </property>
-           <column/>
-           <column/>
-           <column/>
-           <column/>
+          </widget>
+          <widget class="QWidget" name="">
+           <property name="geometry">
+            <rect>
+             <x>140</x>
+             <y>180</y>
+             <width>201</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QComboBox" name="comboBox">
+              <item>
+               <property name="text">
+                <string>Más Likes</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Recientemente Publicado</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="text">
+               <string>Filtrar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <zorder>label_15</zorder>
           <zorder>label_13</zorder>
@@ -731,7 +754,9 @@ background-color: rgb(255, 255, 255);</string>
           <zorder>listWidget</zorder>
           <zorder>lineEdit</zorder>
           <zorder>lineEdit_2</zorder>
-          <zorder>tableWidget</zorder>
+          <zorder>ShowN</zorder>
+          <zorder>ShowG</zorder>
+          <zorder>comboBox</zorder>
          </widget>
          <widget class="QWidget" name="page_4">
           <widget class="QTextBrowser" name="LeerPublisPerfil">

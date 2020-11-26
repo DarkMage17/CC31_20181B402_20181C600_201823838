@@ -41,9 +41,11 @@ public:
     BST<Post, QString>* BST_titulo;
     //proximamente mas
     QString usuarioG, amigoPerfil;
-    QString path = "D:/Projects/RedSocial/Data/";
+    QString path = "C:/Users/josep/Desktop/Ciclo 5/Algoritmos/CONCHETUMARE/Data/";
     QVector<Comentario> comentarios;
 
+private:
+    void BuscarPost(QString titulo);
 private slots:
     void AgregarUsuarioBST(Usuario u);
     void AgregarPubsBST(Post p);
@@ -64,6 +66,11 @@ private slots:
     void EncontrarUsuario(QString s);
 
 
+    void on_btnPost_clicked();
+
+
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     Ui::Login *ui;
     Principal *uiPrincipal;
@@ -71,5 +78,6 @@ private:
     {
         ID, TITULO, FECHA, LIKES
     };
+    int prueba;
 };
 #endif // LOGIN_H

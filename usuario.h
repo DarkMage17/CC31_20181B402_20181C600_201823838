@@ -38,7 +38,7 @@ private:
     QString correo;
     QVector<QString> Amigos;
     ListaS<Post> Publicaciones;
-    QString path = "D:/Projects/RedSocial/Data/";
+    QString path = "C:/Users/josep/Desktop/Ciclo 5/Algoritmos/CONCHETUMARE/Data/";
     QDate fechaRegistro;
     int id;
     QString nombre;

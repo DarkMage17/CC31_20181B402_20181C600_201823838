@@ -7,7 +7,7 @@
 #include "QTextStream"
 #include "ListaSimple.h"
 
-
+Node<Post>* post_selected=nullptr;
 bool inversed = false;
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -63,9 +63,8 @@ void Login::CargarPubs()
             QString linea = in.readLine();
             QStringList palabras = linea.split("\t");
             QDate date=QDate::fromString(palabras[4],"yyyy-MM-dd");
-            Post *p= new Post(palabras[0].toInt(),palabras[1].toInt(),palabras[2],palabras[3],date,palabras[5].toInt());
-            publicaciones.append(*p);
-            AgregarPubsBST(*p);
+            //Post *p= new Post(palabras[0].toInt(),palabras[1].toInt(),palabras[2],palabras[3],date,palabras[5].toInt());
+            AgregarPubsBST(Post(palabras[0].toInt(),palabras[1].toInt(),palabras[2],palabras[3],date,palabras[5].toInt()));
         }
         file.close();
     }
@@ -133,36 +132,59 @@ void Login::ListarOrd()
 
 void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
 {
-    ui->listWidget->clear();
-    if(inversed) BST_likes->postorder(ui->listWidget);
-    else    BST_likes->inorder(ui->listWidget);
+    /*ui->listWidget->clear();
+    if(inversed) BST_titulo->postorder(ui->listWidget);
+    else    BST_titulo->inorder(ui->listWidget);
     inversed = !inversed;
     ui->listWidget->clear();
     for(int i=0;i< 50;i++)
     {
         ui->listWidget->addItem(publicaciones.GetPos(i).data.getTitulo());
+    }*/
+    BST_likes->inorder(ui->listWidget);
+}
+
+void Login::BuscarPost(QString titulo)
+{
+    post_selected = BST_titulo->findNode(titulo);
+    if(post_selected != nullptr){
+        Post game = post_selected->data;
+        ui->ShowG->setText(QString::number(game.getIdPub()));
+    }else{
+        ui->ShowN->setText("NO SE ENCONTRÓ");
     }
 }
 
+void Login::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    QString Titulo=item->text();
+    BuscarPost(Titulo);
+
+}
+
+
 void Login::on_pushButton_4_clicked()
 {
-    int fila;
-    for(int i=0;i<publicaciones.Size();i++)
+    switch(ui->comboBox->currentIndex())
     {
-        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-        fila = ui->tableWidget->rowCount()-1;
-        ui->tableWidget->setItem(fila, ID, new QTableWidgetItem(QString::number(publicaciones.GetPos(i).data.getIdPub())));
-        ui->tableWidget->setItem(fila, TITULO, new QTableWidgetItem(publicaciones.GetPos(i).data.getTitulo()));
+    case 0:
+        ui->listWidget->clear();
+        BST_likes->postorder(ui->listWidget);
+        BST_likes->CountZero();
+        break;
+    case 1:
+        ui->listWidget->clear();
+        BST_fechaPub->postorder(ui->listWidget);
+        BST_fechaPub->CountZero();
+        break;
     }
+
     //CargarPubsHomePage();
     /*ui->LUsuariosGlob->clear();
     if(inversed) BST_id->postorder(ui->listWidget);
     else    BST_id->inorder(ui->listWidget);
     inversed = !inversed;
-    for(int i=0;i<usuarios.Size();i++)
-    {
-
-    }*/
+    */
 }
 void Login::on_B_Seguir_clicked()
 {
@@ -178,6 +200,7 @@ void Login::on_B_ingresar_clicked()
     QString correo = ui->txt_correoLog->text();
     EncontrarUsuario(correo);
     CargarPubs();
+    CargarPubsHomePage();
     ui->stackedWidget->setCurrentIndex(2);
     ui->labelUser->setText(logueado->data.getNombre());
     //IngresoCuenta(correo,password);
@@ -433,4 +456,10 @@ void Login::on_pushButton_2_clicked()
     ui->LaberUserPerfil_2->setText("My Posts");
 }
 */
+
+
+void Login::on_btnPost_clicked()
+{
+    //ui->tableWidget->sortByColumn(1,Qt::SortOrder::DescendingOrder);
+}
 

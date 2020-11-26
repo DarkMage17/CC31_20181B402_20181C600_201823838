@@ -7,6 +7,7 @@
 #include <functional>
 #include <QTextStream>
 #include <QListWidget>
+#include <queue>
 
 using namespace std;
 
@@ -24,6 +25,7 @@ class BST{
   public:
   Node<OBJ>* root;
   function<KEY(OBJ)> key;
+  int count = 0;
 
   BST(function<KEY(OBJ)> key = [](OBJ obj){return obj;},Node<OBJ>* root = nullptr):key(key),root(root){}
 
@@ -39,6 +41,37 @@ class BST{
               current = current->right;
           else if (val < key(current->data))
               current = current->left;
+      }
+      return node_null;
+  }
+  Node<OBJ>* findNode(KEY val){
+    Node<OBJ>* node_null = nullptr;
+    Node<OBJ>* current = this->root;
+    while(current != nullptr){
+        if(val == key(current->data)){
+            return current;
+        }else if(val > key(current->data)){
+            current = current->right;
+        }else if(val < key(current->data)){
+            current = current->left;
+        }
+    }
+    return node_null;
+  }
+
+  Node<OBJ>* find_query(QString val, QListWidget* ventana){
+      Node<OBJ>* node_null = nullptr;
+      queue<Node<OBJ>*> q;
+      ventana->clear();
+      q.push(this->root);
+      while(q.empty()==false){
+          Node<OBJ>* actual = q.front();
+          if(actual->data.getTitulo().contains(val,Qt::CaseInsensitive)){
+            ventana->addItem(actual->data.toString());
+          }
+          q.pop();
+          if(actual->left != NULL) q.push(actual->left);
+          if(actual->right != NULL) q.push(actual->right);
       }
       return node_null;
   }
@@ -93,8 +126,17 @@ class BST{
     //CASO BASE
     if(node == nullptr) return;
     postorder(lista,node->right);
-    lista->addItem(node->data.toString());
-    postorder(lista,node->left);
+    if(count < 50)
+    {
+       lista->addItem(node->data.toString());
+       postorder(lista,node->left);
+       count++;
+    }
+  }
+
+  int CountZero()
+  {
+      return count = 0;
   }
   // %%% %%%
   //Lambda [](Juego j){return j.toString();}
