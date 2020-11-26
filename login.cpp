@@ -111,9 +111,21 @@ void Login::AgregarPub()
     int idpubl = BST_idPub->max_node()->data.getIdPub();
     idpubl++;
     Post *p = new Post(idpubl,idu,ui->lineEdit_2->text(),ui->EditPublis->toPlainText(),QDate::currentDate(),0);
-    publicaciones.append(*p);
-    AgregarPubsBST(*p);
-    ui->labelUser->setText(QString::number(idpubl));
+    if(QFileInfo(path+"publications.tsv").exists()==true && p->getTitulo()!="" && p->getTexto()!=""){
+        QFile archivo(path+"publications.tsv");
+        if(archivo.open(QFile::Append | QFile::Text)){
+            QTextStream salida(&archivo);
+            salida<< Qt::endl <<idpubl<<"\t"<<p->getIdUsers()<<"\t"<<p->getTitulo()<<"\t"<<p->getTexto()<<"\t"<<p->getLikes()<<"\t"<<p->getFechaPub().toString("yyyy-MM-dd");
+            archivo.flush();
+            archivo.close();
+            publicaciones.append(*p);
+            AgregarPubsBST(*p);
+            ui->lineEdit_2->clear();
+            ui->EditPublis->clear();
+        }
+    }
+    else
+        QMessageBox::information(this,"Advertencia","Llene los espacios en blanco");
 }
 
 void Login::ListarOrd()
@@ -357,8 +369,20 @@ void Login::on_B_confirmar_clicked()
     int idu = BST_id->max_node()->data.getId();
     idu++;
     Usuario *u = new Usuario(idu,ui->txt_correoReg->text(),ui->txt_nombreReg->text(),QDate::currentDate());
-    usuarios.append(*u);
-    AgregarUsuarioBST(*u);
+    if(QFileInfo(path + "users.tsv").exists() == true && u->getCorreo()!=""){
+        QFile archivo(path + "users.tsv");
+        if(archivo.open(QFile::Append | QFile::Text)){
+            QTextStream salida(&archivo);
+            salida<< Qt::endl << u->getId()<<"\t"<<u->getCorreo()<<"\t"<<u->getNombre()<<"\t"<<u->getFecha().toString("yyyy-MM-dd");
+            archivo.flush();
+            archivo.close();
+            usuarios.append(*u);
+            AgregarUsuarioBST(*u);
+        }
+         QMessageBox::information(this,"Information","La cuenta se creó correctamente");
+    }
+    else
+        QMessageBox::warning(this,"Error","Ya existe una cuenta con ese usuario");
     ui->stackedWidget->setCurrentIndex(1);
     ui->txt_correoLog->setText("");
     ui->txt_nombreReg->setText("");
