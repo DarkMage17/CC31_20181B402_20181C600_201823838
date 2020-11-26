@@ -141,7 +141,7 @@ void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
     {
         ui->listWidget->addItem(publicaciones.GetPos(i).data.getTitulo());
     }*/
-    BST_idPub->inorder(ui->listWidget);
+    BST_likes->inorder(ui->listWidget);
 }
 
 void Login::BuscarPost(QString titulo)
@@ -165,24 +165,26 @@ void Login::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 
 void Login::on_pushButton_4_clicked()
 {
-    /*int fila;
-    for(int i=0;i<publicaciones.Size();i++)
+    switch(ui->comboBox->currentIndex())
     {
-        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-        fila = ui->tableWidget->rowCount()-1;
-        ui->tableWidget->setItem(fila, ID, new QTableWidgetItem(QString::number(publicaciones.GetPos(i).data.getIdPub())));
-        ui->tableWidget->setItem(fila, TITULO, new QTableWidgetItem(publicaciones.GetPos(i).data.getTitulo()));
-        ui->tableWidget->setItem(fila, LIKES, new QTableWidgetItem(QString::number(publicaciones.GetPos(i).data.getLikes())));
-    }*/
-    CargarPubsHomePage();
+    case 0:
+        ui->listWidget->clear();
+        BST_likes->postorder(ui->listWidget);
+        BST_likes->CountZero();
+        break;
+    case 1:
+        ui->listWidget->clear();
+        BST_fechaPub->postorder(ui->listWidget);
+        BST_fechaPub->CountZero();
+        break;
+    }
+
+    //CargarPubsHomePage();
     /*ui->LUsuariosGlob->clear();
     if(inversed) BST_id->postorder(ui->listWidget);
     else    BST_id->inorder(ui->listWidget);
     inversed = !inversed;
-    for(int i=0;i<usuarios.Size();i++)
-    {
-
-    }*/
+    */
 }
 void Login::on_B_Seguir_clicked()
 {
@@ -198,6 +200,7 @@ void Login::on_B_ingresar_clicked()
     QString correo = ui->txt_correoLog->text();
     EncontrarUsuario(correo);
     CargarPubs();
+    CargarPubsHomePage();
     ui->stackedWidget->setCurrentIndex(2);
     ui->labelUser->setText(logueado->data.getNombre());
     //IngresoCuenta(correo,password);
@@ -457,6 +460,6 @@ void Login::on_pushButton_2_clicked()
 
 void Login::on_btnPost_clicked()
 {
-    ui->tableWidget->sortByColumn(1,Qt::SortOrder::DescendingOrder);
+    //ui->tableWidget->sortByColumn(1,Qt::SortOrder::DescendingOrder);
 }
 
