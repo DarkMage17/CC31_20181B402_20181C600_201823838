@@ -107,15 +107,13 @@ void Login::AgregarPubsBST(Post p)
 
 void Login::AgregarPub()
 {
-    int idPub = 1;
-    int idUser = logueado->data.getId();
-    int numLikes = 1;
-    QString desc = "";
-    QDate fechaPub = QDate::currentDate();
-    QString titulo = ui->EditPublis->toPlainText();
-    Post *p=new Post(idPub,idUser,titulo,desc,fechaPub,numLikes);
+    int idu = logueado->data.getId();
+    int idpubl = BST_idPub->max_node()->data.getIdPub();
+    idpubl++;
+    Post *p = new Post(idpubl,idu,ui->lineEdit_2->text(),ui->EditPublis->toPlainText(),QDate::currentDate(),0);
     publicaciones.append(*p);
     AgregarPubsBST(*p);
+    ui->labelUser->setText(QString::number(idpubl));
 }
 
 void Login::ListarOrd()
@@ -132,16 +130,8 @@ void Login::ListarOrd()
 
 void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
 {
-    /*ui->listWidget->clear();
-    if(inversed) BST_titulo->postorder(ui->listWidget);
-    else    BST_titulo->inorder(ui->listWidget);
-    inversed = !inversed;
-    ui->listWidget->clear();
-    for(int i=0;i< 50;i++)
-    {
-        ui->listWidget->addItem(publicaciones.GetPos(i).data.getTitulo());
-    }*/
-    BST_likes->inorder(ui->listWidget);
+    BST_fechaPub->postorder(ui->listWidget);
+    BST_fechaPub->CountZero();
 }
 
 void Login::BuscarPost(QString titulo)
@@ -203,9 +193,9 @@ void Login::on_B_ingresar_clicked()
     CargarPubsHomePage();
     ui->stackedWidget->setCurrentIndex(2);
     ui->labelUser->setText(logueado->data.getNombre());
-    //IngresoCuenta(correo,password);
     ui->txt_correoLog->setText("");
-    ui->txt_contraLog->setText("");
+    ui->txt_nombreReg->setText("");
+    ui->txt_correoReg->setText("");
     //CargarPostGlob();
 }
 
@@ -216,12 +206,10 @@ void Login::EncontrarUsuario(QString s)
 
 void Login::on_B_registrar_clicked()
 {
-    CargarUsuarios();
-    //QString a = direccion.dirName();
-    /*
     ui->stackedWidget->setCurrentIndex(1);
     ui->txt_correoLog->setText("");
-    ui->txt_contraLog->setText("");*/
+    ui->txt_nombreReg->setText("");
+    ui->txt_correoReg->setText("");
 }
 
 /*
@@ -363,34 +351,30 @@ void Login::CargarPostsPerfil(QString u) // Carga los post del usuario logueado
         archivo.close();
     }
 }
-
+*/
 void Login::on_B_confirmar_clicked()
 {
-    QString correo = ui->txt_correoReg->text();
-    QString contra = ui->txt_contraReg->text();
-    QString confirm = ui->txt_confirmar->text();
-    CreacionCuenta(correo,contra,confirm);
+    int idu = BST_id->max_node()->data.getId();
+    idu++;
+    Usuario *u = new Usuario(idu,ui->txt_correoReg->text(),ui->txt_nombreReg->text(),QDate::currentDate());
+    usuarios.append(*u);
+    AgregarUsuarioBST(*u);
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->txt_correoLog->setText("");
+    ui->txt_nombreReg->setText("");
     ui->txt_correoReg->setText("");
-    ui->txt_contraReg->setText("");
-    ui->txt_confirmar->setText("");
 }
-*/
 
-/*
+
 void Login::on_btnVolverL_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+    ui->txt_correoLog->setText("");
+    ui->txt_nombreReg->setText("");
     ui->txt_correoReg->setText("");
-    ui->txt_contraReg->setText("");
-    ui->txt_confirmar->setText("");
 }
 
-void Login::on_btnPost_clicked()
-{
-    Postear();
-    ui->EditPublis->setText("");
-}
-
+/*
 void Login::on_btnLogOut_clicked()
 {
     //ui->txtPost->setText("");
@@ -404,9 +388,9 @@ void Login::on_BtnProfile_clicked() // Obtiene los amigos del usuario (funcion e
     //QVector<QString> v = logueado->DevolverAmigos();
     //for(int i=0;i<v.size();i++)
     //    ui->ListAmigosPerfil->addItem(v[i]);
-    publicacionesVector = BST_idUser->findMultiple(logueado->data.getId());
-    for(int i=0; i<publicacionesVector->size();i++)
-        ui->listWidget_2->addItem(publicacionesVector[i].data());
+    //publicacionesVector = BST_idUser->findMultiple(logueado->data.getId());
+    //for(int i=0; i<publicacionesVector->size();i++)
+    //    ui->listWidget_2->addItem(publicacionesVector[i].data());
 }
 /*
 
@@ -460,8 +444,7 @@ void Login::on_pushButton_2_clicked()
 }
 */
 
-
 void Login::on_btnPost_clicked()
 {
-    //ui->tableWidget->sortByColumn(1,Qt::SortOrder::DescendingOrder);
+    AgregarPub();
 }

@@ -14,7 +14,7 @@ public:
     QString getTitulo();
     QString getTexto();
     QDate getFechaPub();
-    QString fill_space(QString fill, int n = 15){
+    QString fill_space(QString fill, int n = 0){
         int sep = n-fill.size();
         if(sep % 2 != 0)
             return QString((sep/2),' ') + fill + QString((sep/2)+1,' ');
@@ -22,7 +22,7 @@ public:
     }
 
     QString toString(){
-       return fill_space(this->titulo);/* + "|" + fill_space(this->fechaPublicacion.toString("yyyy-MM-dd")) + "|" + fill_space(this -> a = QString::number(likes));*/
+       return this->titulo;/* + "|" + fill_space(this->fechaPublicacion.toString("yyyy-MM-dd")) + "|" + fill_space(this -> a = QString::number(likes));*/
     }
 protected:
     int idPublicacion;

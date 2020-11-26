@@ -19,6 +19,7 @@ class Lista{
 public:
     Nodo<T>* head = nullptr;
     Nodo<T>* selected = nullptr;
+    Nodo<T>* tail = nullptr;
 
     function <void(T)>append=[&](T data){
         Nodo<T>* nodo = new Nodo<T>(data);
@@ -27,6 +28,7 @@ public:
         {
           this->head = nodo;
           this->selected = head;
+          this->tail = nodo;
           return;
         }
 
@@ -38,6 +40,7 @@ public:
 
         last->next = nodo;
         nodo->prev = last;
+        tail = nodo;
     };
 
     function <void()> eliminar=[&](){
@@ -76,6 +79,10 @@ public:
         return *current;
     };
 
+    Nodo<T> getTail()
+    {
+        return *tail;
+    }
 
     function<int()>Size=[&](){
         int count = 0;

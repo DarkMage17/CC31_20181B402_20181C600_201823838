@@ -43,7 +43,7 @@ public:
     QString usuarioG, amigoPerfil;
     QString path = "D:/Projects/CC31_20181B402_20181C600_201823838/Data/";
     QVector<Comentario> comentarios;
-    QVector<Node<Post>*>* publicacionesVector;
+    //QVector<Node<Post>*>* publicacionesVector;
 private:
     void BuscarPost(QString titulo);
 private slots:
@@ -58,18 +58,16 @@ private slots:
     void CargarPubsHomePage();
     void on_B_registrar_clicked();
     void on_BtnProfile_clicked();
-
     void on_B_ingresar_clicked();
-
+    void on_B_confirmar_clicked();
     void on_B_Seguir_clicked();
-
+    void on_btnVolverL_clicked();
     void EncontrarUsuario(QString s);
 
 
-    void on_btnPost_clicked();
-
-
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_btnPost_clicked();
 
 private:
     Ui::Login *ui;

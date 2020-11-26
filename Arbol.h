@@ -27,7 +27,7 @@ class BST{
   Node<OBJ>* root;
   function<KEY(OBJ)> key;
   int count = 0;
-  QVector<Node<OBJ>*>* arreglo;
+  //QVector<Node<OBJ>*>* arreglo;
 
   BST(function<KEY(OBJ)> key = [](OBJ obj){return obj;},Node<OBJ>* root = nullptr):key(key),root(root){}
 
@@ -47,7 +47,7 @@ class BST{
     return node_null;
   }
 
-  QVector<Node<OBJ>*> findMultiple(KEY val)
+  /*QVector<Node<OBJ>*> findMultiple(KEY val)
   {
     Node<OBJ>* current = this->root;
     while(current != nullptr){
@@ -60,7 +60,7 @@ class BST{
         }
     }
     return *arreglo;
-  }
+  }*/
 
   Node<OBJ>* find_query(QString val, QListWidget* ventana){
       Node<OBJ>* node_null = nullptr;
@@ -164,6 +164,15 @@ class BST{
     if(node->left == nullptr) return node;
     while(node && node->left != nullptr){
       node = node->left;
+    }
+    return node;
+  }
+
+  Node<OBJ>* max_node(){
+    Node<OBJ>* node = this->root;
+    if(node->right == nullptr) return node;
+    while(node && node->right != nullptr){
+      node = node->right;
     }
     return node;
   }
