@@ -144,17 +144,56 @@ void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
     }
 }
 
+
 void Login::on_pushButton_4_clicked()
 {
+
+    // CargarUsuarios();
+    int fila;
+    for(int i=0;i<publicaciones.Size();i++)
+    {
+        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+        fila = ui->tableWidget->rowCount()-1;
+
+        QTableWidgetItem *item = new QTableWidgetItem;
+        item->setData(Qt::EditRole,publicaciones.GetPos(i).data.getIdPub());
+
+        QTableWidgetItem *item2 =new QTableWidgetItem;
+        item2->setData(Qt::EditRole,publicaciones.GetPos(i).data.getFechaPub());
+
+        QTableWidgetItem *item3 = new QTableWidgetItem;
+        item3->setData(Qt::EditRole,publicaciones.GetPos(i).data.getLikes());
+
+        ui->tableWidget->setItem(fila, ID, item);
+        ui->tableWidget->setItem(fila, TITULO, new QTableWidgetItem(publicaciones.GetPos(i).data.getTitulo()));
+        ui->tableWidget->setItem(fila, FECHA, item2);
+        ui->tableWidget->setItem(fila, LIKES, item3);
+
+
+        //ui->tableWidget->sortItems(2, Qt::AscendingOrder);
+
+    }
     //CargarPubsHomePage();
+    /*ui->LUsuariosGlob->clear();
+    if(inversed) BST_id->postorder(ui->listWidget);
+    else    BST_id->inorder(ui->listWidget);
+    inversed = !inversed;
+    for(int i=0;i<usuarios.Size();i++)
+    {
+
+    }*/
 }
 void Login::on_B_Seguir_clicked()
 {
+
+    ui->tableWidget->sortItems(3, Qt::DescendingOrder);
+    /*
     QString valor = ui->lineEdit->text();
     ui->LUsuariosGlob->clear();
     Lista<Usuario> u = usuarios.filtrar(valor);
     for(int i=0;i< 50;i++)
         ui->LUsuariosGlob->addItem(u.GetPos(i).data.getNombre());
+        */
 }
 
 void Login::on_B_ingresar_clicked()
@@ -345,13 +384,15 @@ void Login::on_btnVolverL_clicked()
     ui->txt_contraReg->setText("");
     ui->txt_confirmar->setText("");
 }
-
+*/
 void Login::on_btnPost_clicked()
 {
-    Postear();
-    ui->EditPublis->setText("");
+    ui->tableWidget->setSortingEnabled(true);
+    ui->tableWidget->sortItems(3, Qt::AscendingOrder);
+    //Postear();
+    //ui->EditPublis->setText("");
 }
-
+/*
 void Login::on_btnLogOut_clicked()
 {
     //ui->txtPost->setText("");
@@ -385,6 +426,8 @@ void Login::on_btnLogOut2_clicked()
 
 void Login::on_B_Seguir_clicked() // sigue a un usuario y lo añade al bloc de notas del usuario (funcion en usuario.cpp)
 {
+
+
     QVector <QString> v = logueado->DevolverAmigos();
     if(v.contains(usuarioG) == false)
     {
@@ -393,6 +436,7 @@ void Login::on_B_Seguir_clicked() // sigue a un usuario y lo añade al bloc de n
     }
     else
         QMessageBox::warning(this,"Error","Ya sigues a ese usuario");
+
 }
 
 void Login::on_LUsuariosGlob_itemClicked(QListWidgetItem *item)

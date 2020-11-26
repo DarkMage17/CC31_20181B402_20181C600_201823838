@@ -41,7 +41,7 @@ public:
     BST<Post, QString>* BST_titulo;
     //proximamente mas
     QString usuarioG, amigoPerfil;
-    QString path = "C:/Users/usuario/Desktop/Git";
+    QString path = "C:/Users/usuario/Desktop/Git/Data/";
     QVector<Comentario> comentarios;
 
 private slots:
@@ -56,7 +56,7 @@ private slots:
     void CargarPubsHomePage();
     void on_B_registrar_clicked();
 
-
+   void on_btnPost_clicked();
     void on_B_ingresar_clicked();
 
     void on_B_Seguir_clicked();
@@ -67,5 +67,9 @@ private slots:
 private:
     Ui::Login *ui;
     Principal *uiPrincipal;
+    enum Columna
+    {
+        ID, TITULO, FECHA, LIKES
+    };
 };
 #endif // LOGIN_H
