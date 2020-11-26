@@ -22,7 +22,7 @@ public:
     }
 
     QString toString(){
-       return fill_space(this->titulo ,35) + "|" + fill_space(this->fechaPublicacion.toString("yyyy-MM-dd")) + "|" + fill_space(this -> a = QString::number(likes));
+       return fill_space(this->titulo);/* + "|" + fill_space(this->fechaPublicacion.toString("yyyy-MM-dd")) + "|" + fill_space(this -> a = QString::number(likes));*/
     }
 protected:
     int idPublicacion;
