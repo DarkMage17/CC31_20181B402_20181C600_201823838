@@ -5,6 +5,9 @@
 #include "QDate"
 #include "QVector"
 #include "Comentario.h"
+#include "post.h"
+#include "qtimer.h"
+
 
 namespace Ui {
 class PublicacionForm;
@@ -16,14 +19,13 @@ class PublicacionForm : public QWidget
 
 public:
     explicit PublicacionForm(QWidget *parent = nullptr);
+    Post p;
+    QTimer *timer;
     ~PublicacionForm();
-    QString texto;
-    int likes;
-    int compartidos;
-    int idU;
-    int idPub;
-    QDate fechaPub;
     QVector<Comentario> comentarios;
+    void Load();
+public slots:
+    void timing();
 private:
     Ui::PublicacionForm *ui;
 };

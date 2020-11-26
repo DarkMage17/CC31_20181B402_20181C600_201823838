@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QListWidget>
 #include <queue>
+#include "qvector.h"
 
 using namespace std;
 
@@ -26,25 +27,12 @@ class BST{
   Node<OBJ>* root;
   function<KEY(OBJ)> key;
   int count = 0;
+  QVector<Node<OBJ>*>* arreglo;
 
   BST(function<KEY(OBJ)> key = [](OBJ obj){return obj;},Node<OBJ>* root = nullptr):key(key),root(root){}
 
-  Node<OBJ>* find_node(KEY val)
+  Node<OBJ>* findNode(KEY val)
   {
-      Node<OBJ>* node_null = nullptr;
-      Node<OBJ>* current = this->root;
-      while(current != nullptr)
-      {
-          if(val == key(current->data))
-              return current;
-          else if (val > key(current->data))
-              current = current->right;
-          else if (val < key(current->data))
-              current = current->left;
-      }
-      return node_null;
-  }
-  Node<OBJ>* findNode(KEY val){
     Node<OBJ>* node_null = nullptr;
     Node<OBJ>* current = this->root;
     while(current != nullptr){
@@ -57,6 +45,21 @@ class BST{
         }
     }
     return node_null;
+  }
+
+  QVector<Node<OBJ>*> findMultiple(KEY val)
+  {
+    Node<OBJ>* current = this->root;
+    while(current != nullptr){
+        if(val == key(current->data)){
+            arreglo->append(current);
+        }else if(val > key(current->data)){
+            current = current->right;
+        }else if(val < key(current->data)){
+            current = current->left;
+        }
+    }
+    return *arreglo;
   }
 
   Node<OBJ>* find_query(QString val, QListWidget* ventana){
@@ -146,6 +149,15 @@ class BST{
     inorder_l(imprimir,node->left);
     imprimir(node->data);
     inorder_l(imprimir,node->right);
+  }
+
+  void inorder_perfil(function<void(OBJ)> imprimir) { inorder_l(imprimir, this->root);}
+  void inorder_perfil(function<void(OBJ)> imprimir, Node<OBJ>* node, int i){
+    if(node == nullptr) return;
+    inorder_perfil(imprimir,node->left);
+    if(node->data == i)
+        imprimir(node->data);
+    inorder_perfil(imprimir,node->right);
   }
 
   Node<OBJ>* min_node(Node<OBJ>* node){

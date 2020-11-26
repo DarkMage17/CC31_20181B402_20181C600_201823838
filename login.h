@@ -41,9 +41,9 @@ public:
     BST<Post, QString>* BST_titulo;
     //proximamente mas
     QString usuarioG, amigoPerfil;
-    QString path = "C:/Users/josep/Desktop/Ciclo 5/Algoritmos/CONCHETUMARE/Data/";
+    QString path = "D:/Projects/CC31_20181B402_20181C600_201823838/Data/";
     QVector<Comentario> comentarios;
-
+    QVector<Node<Post>*>* publicacionesVector;
 private:
     void BuscarPost(QString titulo);
 private slots:
@@ -57,7 +57,7 @@ private slots:
     void AgregarPub();
     void CargarPubsHomePage();
     void on_B_registrar_clicked();
-
+    void on_BtnProfile_clicked();
 
     void on_B_ingresar_clicked();
 
@@ -78,6 +78,6 @@ private:
     {
         ID, TITULO, FECHA, LIKES
     };
-    int prueba;
+    PublicacionForm *formPub;
 };
 #endif // LOGIN_H
