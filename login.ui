@@ -27,7 +27,7 @@
        <string>FOXY BLOG</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
+       <item row="0" column="1">
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
           <number>0</number>
@@ -76,70 +76,6 @@
            <property name="text">
             <string>Log In</string>
            </property>
-          </widget>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>500</x>
-             <y>80</y>
-             <width>241</width>
-             <height>329</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="font">
-               <font>
-                <family>Cambria Math</family>
-                <pointsize>14</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);</string>
-              </property>
-              <property name="text">
-               <string>USUARIO</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="txt_correoLog">
-              <property name="text">
-               <string>nhut@hotmail</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="font">
-               <font>
-                <family>Cambria Math</family>
-                <pointsize>14</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);</string>
-              </property>
-              <property name="text">
-               <string>PASSWORD</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="txt_contraLog">
-              <property name="echoMode">
-               <enum>QLineEdit::Password</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
           </widget>
           <widget class="QLabel" name="label_6">
            <property name="geometry">
@@ -226,8 +162,8 @@
           <widget class="QLabel" name="label_20">
            <property name="geometry">
             <rect>
-             <x>420</x>
-             <y>50</y>
+             <x>510</x>
+             <y>150</y>
              <width>131</width>
              <height>51</height>
             </rect>
@@ -261,8 +197,45 @@
             <string>Welcome to</string>
            </property>
           </widget>
+          <widget class="QLabel" name="label_2">
+           <property name="geometry">
+            <rect>
+             <x>520</x>
+             <y>220</y>
+             <width>239</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Cambria Math</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>CORREO</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="txt_correoLog">
+           <property name="geometry">
+            <rect>
+             <x>510</x>
+             <y>270</y>
+             <width>251</width>
+             <height>22</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
           <zorder>B_ingresar</zorder>
-          <zorder>layoutWidget</zorder>
           <zorder>label_6</zorder>
           <zorder>label_8</zorder>
           <zorder>B_registrar</zorder>
@@ -270,6 +243,8 @@
           <zorder>label_19</zorder>
           <zorder>label_20</zorder>
           <zorder>label_21</zorder>
+          <zorder>label_2</zorder>
+          <zorder>txt_correoLog</zorder>
          </widget>
          <widget class="QWidget" name="page_2">
           <widget class="QPushButton" name="B_confirmar">
@@ -278,8 +253,8 @@
            </property>
            <property name="geometry">
             <rect>
-             <x>600</x>
-             <y>450</y>
+             <x>590</x>
+             <y>350</y>
              <width>151</width>
              <height>51</height>
             </rect>
@@ -298,7 +273,7 @@
            <property name="geometry">
             <rect>
              <x>390</x>
-             <y>450</y>
+             <y>350</y>
              <width>151</width>
              <height>51</height>
             </rect>
@@ -367,7 +342,7 @@
             <enum>Qt::RightToLeft</enum>
            </property>
            <property name="text">
-            <string>USUARIO</string>
+            <string>CORREO</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -399,13 +374,13 @@
             </font>
            </property>
            <property name="text">
-            <string>PASSWORD</string>
+            <string>NOMBRE</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
           </widget>
-          <widget class="QLineEdit" name="txt_contraReg">
+          <widget class="QLineEdit" name="txt_nombreReg">
            <property name="geometry">
             <rect>
              <x>370</x>
@@ -415,42 +390,7 @@
             </rect>
            </property>
            <property name="echoMode">
-            <enum>QLineEdit::Password</enum>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_7">
-           <property name="geometry">
-            <rect>
-             <x>380</x>
-             <y>290</y>
-             <width>389</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <family>Cambria Math</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>CONFIRM PASSWORD</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="txt_confirmar">
-           <property name="geometry">
-            <rect>
-             <x>370</x>
-             <y>340</y>
-             <width>389</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <property name="echoMode">
-            <enum>QLineEdit::Password</enum>
+            <enum>QLineEdit::Normal</enum>
            </property>
           </widget>
          </widget>
@@ -574,18 +514,18 @@ background-color: rgb(255, 255, 255);
           <widget class="QListWidget" name="LUsuariosGlob">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>140</y>
-             <width>111</width>
-             <height>421</height>
+             <x>0</x>
+             <y>170</y>
+             <width>131</width>
+             <height>391</height>
             </rect>
            </property>
           </widget>
-          <widget class="QPushButton" name="B_Seguir">
+          <widget class="QPushButton" name="B_encontrar">
            <property name="geometry">
             <rect>
-             <x>570</x>
-             <y>30</y>
+             <x>360</x>
+             <y>180</y>
              <width>91</width>
              <height>21</height>
             </rect>
@@ -597,7 +537,7 @@ background-color: rgb(255, 255, 255);
             </font>
            </property>
            <property name="text">
-            <string>Seguir</string>
+            <string>Encontrar</string>
            </property>
           </widget>
           <widget class="QLabel" name="label_13">
@@ -663,8 +603,8 @@ background-color: rgb(255, 255, 255);
           <widget class="QLineEdit" name="lineEdit">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>30</y>
+             <x>460</x>
+             <y>180</y>
              <width>113</width>
              <height>21</height>
             </rect>
@@ -690,7 +630,7 @@ background-color: rgb(255, 255, 255);</string>
           <widget class="QPushButton" name="pushButton_4">
            <property name="geometry">
             <rect>
-             <x>380</x>
+             <x>250</x>
              <y>180</y>
              <width>80</width>
              <height>21</height>
@@ -705,7 +645,7 @@ background-color: rgb(255, 255, 255);</string>
             <rect>
              <x>140</x>
              <y>180</y>
-             <width>235</width>
+             <width>101</width>
              <height>22</height>
             </rect>
            </property>
@@ -716,9 +656,63 @@ background-color: rgb(255, 255, 255);</string>
            </item>
            <item>
             <property name="text">
-             <string>Recientemente Publicado</string>
+             <string>Más recientes</string>
             </property>
            </item>
+          </widget>
+          <widget class="QComboBox" name="comboBox_2">
+           <property name="geometry">
+            <rect>
+             <x>580</x>
+             <y>180</y>
+             <width>101</width>
+             <height>22</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string>Contiene</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Empieza con</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Termina con</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Igual</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>No contiene</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QLabel" name="labelUser_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>150</y>
+             <width>111</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Cambria Math</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>NUEVOS USUARIOS</string>
+           </property>
           </widget>
           <zorder>label_15</zorder>
           <zorder>label_13</zorder>
@@ -729,12 +723,14 @@ background-color: rgb(255, 255, 255);</string>
           <zorder>btnLogOut</zorder>
           <zorder>labelUser</zorder>
           <zorder>LUsuariosGlob</zorder>
-          <zorder>B_Seguir</zorder>
+          <zorder>B_encontrar</zorder>
           <zorder>listWidget</zorder>
           <zorder>lineEdit</zorder>
           <zorder>lineEdit_2</zorder>
           <zorder>pushButton_4</zorder>
           <zorder>comboBox</zorder>
+          <zorder>comboBox_2</zorder>
+          <zorder>labelUser_2</zorder>
          </widget>
          <widget class="QWidget" name="page_4">
           <widget class="QPushButton" name="btnHome">

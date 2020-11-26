@@ -19,6 +19,7 @@ class Lista{
 public:
     Nodo<T>* head = nullptr;
     Nodo<T>* selected = nullptr;
+    Nodo<T>* tail = nullptr;
 
     function <void(T)>append=[&](T data){
         Nodo<T>* nodo = new Nodo<T>(data);
@@ -27,6 +28,7 @@ public:
         {
           this->head = nodo;
           this->selected = head;
+          this->tail = nodo;
           return;
         }
 
@@ -38,6 +40,7 @@ public:
 
         last->next = nodo;
         nodo->prev = last;
+        tail = nodo;
     };
 
     function <void()> eliminar=[&](){
@@ -76,6 +79,10 @@ public:
         return *current;
     };
 
+    Nodo<T> getTail()
+    {
+        return *tail;
+    }
 
     function<int()>Size=[&](){
         int count = 0;
@@ -107,13 +114,36 @@ public:
    };
 
 
-   Lista<T> filtrar(QString s)
+   Lista<T> filtrar(QString s, int n)
    {
        Lista<T> filtrada;
-       for(int i=0;i<this->Size();i++)
+       switch (n)
        {
-           if(this->GetPos(i).data.getNombre().contains(s, Qt::CaseInsensitive))
-               filtrada.append(this->GetPos(i).data);
+       case 0:
+           for(int i=0;i<this->Size();i++)
+               if(this->GetPos(i).data.getTitulo().contains(s, Qt::CaseInsensitive))
+                   filtrada.append(this->GetPos(i).data);
+           break;
+       case 1:
+           for(int i=0;i<this->Size();i++)
+               if(this->GetPos(i).data.getTitulo().startsWith(s, Qt::CaseInsensitive))
+                   filtrada.append(this->GetPos(i).data);
+           break;
+       case 2:
+           for(int i=0;i<this->Size();i++)
+               if(this->GetPos(i).data.getTitulo().endsWith(s, Qt::CaseInsensitive))
+                   filtrada.append(this->GetPos(i).data);
+           break;
+       case 3:
+           for(int i=0;i<this->Size();i++)
+               if(GetPos(i).data.getTitulo() == s)
+                   filtrada.append(this->GetPos(i).data);
+           break;
+       case 4:
+           for(int i=0;i<this->Size();i++)
+               if(!(this->GetPos(i).data.getTitulo().contains(s, Qt::CaseInsensitive)))
+                   filtrada.append(this->GetPos(i).data);
+           break;
        }
        return filtrada;
    }

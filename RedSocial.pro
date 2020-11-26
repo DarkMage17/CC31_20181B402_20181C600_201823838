@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    follower.cpp \
     main.cpp \
     login.cpp \
     post.cpp \
@@ -20,6 +21,7 @@ HEADERS += \
     ListaDoble.h \
     ListaSimple.h \
     comentario.h \
+    follower.h \
     interaccion.h \
     login.h \
     post.h \

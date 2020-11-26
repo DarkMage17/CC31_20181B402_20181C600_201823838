@@ -30,6 +30,7 @@ QDate Post::getFechaPub()
 {
     return this->fechaPublicacion;
 }
+
 QString Post::getTexto()
 {
     return this->texto;
