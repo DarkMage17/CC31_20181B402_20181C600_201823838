@@ -7,7 +7,7 @@
 #include "QTextStream"
 #include "ListaSimple.h"
 
-Node<Post>* post_selected=nullptr;
+Node<Post>* post_selected = nullptr;
 bool inversed = false;
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -147,11 +147,12 @@ void Login::CargarPubsHomePage() // Carga los posts de todos los usuarios
 void Login::BuscarPost(QString titulo)
 {
     post_selected = BST_titulo->findNode(titulo);
-    if(post_selected != nullptr){
-        Post game = post_selected->data;
-        ui->ShowG->setText(QString::number(game.getIdPub()));
-    }else{
-        ui->ShowN->setText("NO SE ENCONTRÓ");
+    if(post_selected != nullptr)
+    {
+        Post publicacionF = post_selected->data;
+        formPub = new PublicacionForm();
+        formPub->p = publicacionF;
+        formPub->show();
     }
 }
 
@@ -159,7 +160,6 @@ void Login::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     QString Titulo=item->text();
     BuscarPost(Titulo);
-
 }
 
 
@@ -211,7 +211,7 @@ void Login::on_B_ingresar_clicked()
 
 void Login::EncontrarUsuario(QString s)
 {
-    logueado = BST_usuarios->find_node(s);
+    logueado = BST_usuarios->findNode(s);
 }
 
 void Login::on_B_registrar_clicked()
@@ -396,16 +396,19 @@ void Login::on_btnLogOut_clicked()
     //ui->txtPost->setText("");
     ui->ListAmigosPerfil->clear();
 }
-
+*/
 void Login::on_BtnProfile_clicked() // Obtiene los amigos del usuario (funcion en usuario.cpp) y los añade a la lista de seguidos
 {
     ui->ListAmigosPerfil->clear();
     ui->stackedWidget->setCurrentIndex(3);
-    QVector<QString> v = logueado->DevolverAmigos();
-    for(int i=0;i<v.size();i++)
-        ui->ListAmigosPerfil->addItem(v[i]);
-    CargarPostsPerfil(logueado->getUsuario());
+    //QVector<QString> v = logueado->DevolverAmigos();
+    //for(int i=0;i<v.size();i++)
+    //    ui->ListAmigosPerfil->addItem(v[i]);
+    publicacionesVector = BST_idUser->findMultiple(logueado->data.getId());
+    for(int i=0; i<publicacionesVector->size();i++)
+        ui->listWidget_2->addItem(publicacionesVector[i].data());
 }
+/*
 
 void Login::on_btnHome_clicked()
 {
@@ -462,4 +465,3 @@ void Login::on_btnPost_clicked()
 {
     //ui->tableWidget->sortByColumn(1,Qt::SortOrder::DescendingOrder);
 }
-
