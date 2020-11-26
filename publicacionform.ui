@@ -28,6 +28,12 @@
    <property name="text">
     <string>h</string>
    </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
@@ -73,7 +79,7 @@
     <rect>
      <x>10</x>
      <y>340</y>
-     <width>581</width>
+     <width>591</width>
      <height>201</height>
     </rect>
    </property>
@@ -85,13 +91,16 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>270</y>
+     <y>260</y>
      <width>571</width>
-     <height>51</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="text">
-    <string>h</string>
+    <string/>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

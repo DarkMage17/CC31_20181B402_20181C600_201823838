@@ -8,6 +8,12 @@ Usuario::Usuario(int id, QString correo, QString nombre, QDate fecha)
     this->fechaRegistro = fecha;
 }
 
+Usuario::Usuario(int id, int idf)
+{
+    this->id = id;
+    this->idf = idf;
+}
+
 Usuario::Usuario()
 {
 }
@@ -24,6 +30,11 @@ QDate Usuario::getFecha(){
 int Usuario::getId()
 {
     return this->id;
+}
+
+int Usuario::getIdF()
+{
+    return idf;
 }
 int Usuario::CantidadPosts()
 {

@@ -11,8 +11,10 @@ class Usuario
 { 
 public:
     Usuario(int id, QString correo, QString nombre, QDate fecha);
+    Usuario(int id, int idf);
     Usuario();
     int getId();
+    int getIdF();
     QString getCorreo();
     QString getNombre();
     QDate getFecha();
@@ -32,7 +34,7 @@ public:
 
     QString toString(){
        QString a = this->fechaRegistro.toString();
-       return fill_space(this->correo,46)+" | "+fill_space(this->nombre,6)+" | "+fill_space(a,15);
+       return this->correo;
     }
 private:
     QString correo;
@@ -41,6 +43,7 @@ private:
     QString path = "D:/Projects/CC31_20181B402_20181C600_201823838/Data/";
     QDate fechaRegistro;
     int id;
+    int idf;
     QString nombre;
     //Stack<Post>Publicaciones;
 

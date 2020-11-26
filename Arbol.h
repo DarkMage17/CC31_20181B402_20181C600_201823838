@@ -124,6 +124,48 @@ class BST{
     inorder(lista,node->right);
   }
 
+  void Filtrado(QListWidget* lista){ inorder(lista, this->root);}
+  void Filtrado(QListWidget* lista, KEY val){
+    Node<OBJ>* current = this->root;
+    while(current != nullptr){
+        if(val == key(current->data)){
+            return lista->addItem(current->data.getT());
+        }else if(val > key(current->data)){
+            current = current->right;
+        }else if(val < key(current->data)){
+            current = current->left;
+        }
+    }
+  }
+
+  void Filtrado2(QListWidget* lista){ inorder(lista, this->root);}
+  void Filtrado2(QListWidget* lista, KEY val){
+    Node<OBJ>* current = this->root;
+    while(current != nullptr){
+        if(val == key(current->data)){
+            return lista->addItem(current->data.getTitulo());
+        }else if(val > key(current->data)){
+            current = current->right;
+        }else if(val < key(current->data)){
+            current = current->left;
+        }
+    }
+  }
+
+  void Filtrado3(QListWidget* lista){ inorder(lista, this->root);}
+  void Filtrado3(QListWidget* lista, KEY val){
+    Node<OBJ>* current = this->root;
+    while(current != nullptr){
+        if(val == key(current->data)){
+            return lista->addItem(current->data.getCorreo());
+        }else if(val > key(current->data)){
+            current = current->right;
+        }else if(val < key(current->data)){
+            current = current->left;
+        }
+    }
+  }
+
   void postorder(QListWidget* lista){ postorder(lista, this->root);}
   void postorder(QListWidget* lista, Node<OBJ>* node){
     //CASO BASE
@@ -144,20 +186,16 @@ class BST{
   // %%% %%%
   //Lambda [](Juego j){return j.toString();}
   void inorder_l(function<void(OBJ)> imprimir) { inorder_l(imprimir, this->root);}
-  void inorder_l(function<void(OBJ)> imprimir, Node<OBJ>* node){
+  void inorder_l(function<void(OBJ)> imprimir, Node<OBJ>* node)
+  {
     if(node == nullptr) return;
     inorder_l(imprimir,node->left);
-    imprimir(node->data);
-    inorder_l(imprimir,node->right);
-  }
-
-  void inorder_perfil(function<void(OBJ)> imprimir) { inorder_l(imprimir, this->root);}
-  void inorder_perfil(function<void(OBJ)> imprimir, Node<OBJ>* node, int i){
-    if(node == nullptr) return;
-    inorder_perfil(imprimir,node->left);
-    if(node->data == i)
+    if(count < 50)
+    {
         imprimir(node->data);
-    inorder_perfil(imprimir,node->right);
+        inorder_l(imprimir,node->right);
+        count++;
+    }
   }
 
   Node<OBJ>* min_node(Node<OBJ>* node){

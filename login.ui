@@ -232,7 +232,7 @@
             </rect>
            </property>
            <property name="text">
-            <string>nhut@hotmail</string>
+            <string/>
            </property>
           </widget>
           <zorder>B_ingresar</zorder>
@@ -514,14 +514,14 @@ background-color: rgb(255, 255, 255);
           <widget class="QListWidget" name="LUsuariosGlob">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>140</y>
-             <width>111</width>
-             <height>421</height>
+             <x>0</x>
+             <y>170</y>
+             <width>131</width>
+             <height>391</height>
             </rect>
            </property>
           </widget>
-          <widget class="QPushButton" name="B_Seguir">
+          <widget class="QPushButton" name="B_encontrar">
            <property name="geometry">
             <rect>
              <x>360</x>
@@ -695,6 +695,25 @@ background-color: rgb(255, 255, 255);</string>
             </property>
            </item>
           </widget>
+          <widget class="QLabel" name="labelUser_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>150</y>
+             <width>111</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Cambria Math</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>NUEVOS USUARIOS</string>
+           </property>
+          </widget>
           <zorder>label_15</zorder>
           <zorder>label_13</zorder>
           <zorder>EditPublis</zorder>
@@ -704,13 +723,14 @@ background-color: rgb(255, 255, 255);</string>
           <zorder>btnLogOut</zorder>
           <zorder>labelUser</zorder>
           <zorder>LUsuariosGlob</zorder>
-          <zorder>B_Seguir</zorder>
+          <zorder>B_encontrar</zorder>
           <zorder>listWidget</zorder>
           <zorder>lineEdit</zorder>
           <zorder>lineEdit_2</zorder>
           <zorder>pushButton_4</zorder>
           <zorder>comboBox</zorder>
           <zorder>comboBox_2</zorder>
+          <zorder>labelUser_2</zorder>
          </widget>
          <widget class="QWidget" name="page_4">
           <widget class="QPushButton" name="btnHome">

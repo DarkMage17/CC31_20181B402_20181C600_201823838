@@ -7,7 +7,7 @@
 #include "Comentario.h"
 #include "post.h"
 #include "qtimer.h"
-
+#include "QListWidget"
 
 namespace Ui {
 class PublicacionForm;
@@ -24,10 +24,12 @@ public:
     ~PublicacionForm();
     QVector<Comentario> comentarios;
     void Load();
+    Ui::PublicacionForm *ui;
+    QListWidget* getList();
 public slots:
     void timing();
-private:
-    Ui::PublicacionForm *ui;
+private slots:
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
 };
 
 #endif // PUBLICACIONFORM_H
