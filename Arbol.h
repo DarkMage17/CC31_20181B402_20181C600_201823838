@@ -157,7 +157,7 @@ class BST{
     Node<OBJ>* current = this->root;
     while(current != nullptr){
         if(val == key(current->data)){
-            return lista->addItem(current->data.getCorreo());
+            return lista->addItem(QString::number(current->data.getIdf()));
         }else if(val > key(current->data)){
             current = current->right;
         }else if(val < key(current->data)){

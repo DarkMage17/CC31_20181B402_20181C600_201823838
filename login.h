@@ -47,8 +47,8 @@ public:
     BST<Comentario, int>* BST_idPubC;
     BST<Comentario, QString>* BST_textoC;
     //followers
-    BST<Usuario, int>* BST_idF1;
-    BST<Usuario, int>* BST_idF2;
+    BST<Follower, int>* BST_idF1;
+    BST<Follower, int>* BST_idF2;
     //
     QString usuarioG, amigoPerfil;
     QString path = "D:/Projects/CC31_20181B402_20181C600_201823838/Data/";
@@ -61,7 +61,7 @@ private slots:
     void AgregarUsuarioBST(Usuario u);
     void AgregarPubsBST(Post p);
     void AgregarComentsBST(Comentario c);
-    void AgregarFollowersBST(Usuario u);
+    void AgregarFollowersBST(Follower f);
     void CargarUsuarios();
     void CargarPubs();
     void CargarComentarios();
@@ -76,6 +76,7 @@ private slots:
     void on_B_confirmar_clicked();
     void on_btnVolverL_clicked();
     void EncontrarUsuario(QString s);
+    void AgregarFollower(int u, int f);
 
 
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);

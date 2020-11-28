@@ -32,10 +32,11 @@ Login::Login(QWidget *parent)
     this->BST_textoC=new BST<Comentario,QString>([](Comentario c){return c.getT();});
     this->BST_idPubC=new BST<Comentario,int>([](Comentario c){return c.getIDP();});
     //followers
-    this->BST_idF1= new BST<Usuario,int>([](Usuario u){return u.getId();});
-    this->BST_idF2= new BST<Usuario,int>([](Usuario u){return u.getIdF();});
+    this->BST_idF1= new BST<Follower,int>([](Follower f){return f.getIdu();});
+    this->BST_idF2= new BST<Follower,int>([](Follower f){return f.getIdf();});
     CargarUsuarios();
     CargarComentarios();
+    CargarFollowers();
 }
 
 Login::~Login()
@@ -71,8 +72,7 @@ void Login::CargarFollowers()
         while(!in.atEnd()){
             QString linea = in.readLine();
             QStringList palabras = linea.split("\t");
-            Follower *f = new Follower(palabras[0].toInt(),palabras[1].toInt());
-            followers.append(*f);
+            AgregarFollower(palabras[0].toInt(),palabras[1].toInt());
         }
         file.close();
     }
@@ -140,10 +140,10 @@ void Login::AgregarPubsBST(Post p)
     this->BST_idUser->add(p);
 }
 
-void Login::AgregarFollowersBST(Usuario u)
+void Login::AgregarFollowersBST(Follower f)
 {
-    this->BST_idF1->add(u);
-    this->BST_idF2->add(u);
+    this->BST_idF1->add(f);
+    this->BST_idF2->add(f);
 }
 
 void Login::AgregarPub()
@@ -245,6 +245,11 @@ void Login::EncontrarUsuario(QString s)
     logueado = BST_usuarios->findNode(s);
 }
 
+void Login::AgregarFollower(int u, int f)
+{
+    BST_id->findNode(u)->data.AnadirSiguiendo(f);
+}
+
 void Login::on_B_registrar_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
@@ -296,10 +301,11 @@ void Login::on_btnLogOut_clicked()
 
 void Login::on_BtnProfile_clicked() // Obtiene los amigos del usuario (funcion en usuario.cpp) y los añade a la lista de seguidos
 {
-    //CargarFollowers();
     ui->ListAmigosPerfil->clear();
     ui->stackedWidget->setCurrentIndex(3);
+    ui->listWidget_2->clear();
     BST_idPub->Filtrado2(ui->listWidget_2,logueado->data.getId());
+    logueado->data.addListaSiguiendo(ui->ListAmigosPerfil);
 }
 
 

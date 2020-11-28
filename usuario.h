@@ -6,6 +6,7 @@
 #include "post.h"
 #include "ListaSimple.h"
 #include "QDate"
+#include "QListWidget"
 
 class Usuario
 { 
@@ -25,17 +26,13 @@ public:
     void CargarAmigos();
     int CantidadPosts();
     ListaS<Post> DevolverLista();
-    QString fill_space(QString fill, int n = 15){
-        int sep = n-fill.size();
-        if(sep % 2 != 0)
-            return QString((sep/2),' ') + fill + QString((sep/2)+1,' ');
-        return QString((sep/2),' ') + fill + QString((sep/2),' ');
+    QString toString()
+    {
+       return this->nombre;
     }
-
-    QString toString(){
-       QString a = this->fechaRegistro.toString();
-       return this->correo;
-    }
+    void AnadirSiguiendo(int ids);
+    void addListaSiguiendo(QListWidget *l);
+    QVector<int> siguiendo;
 private:
     QString correo;
     QVector<QString> Amigos;
@@ -45,8 +42,6 @@ private:
     int id;
     int idf;
     QString nombre;
-    //Stack<Post>Publicaciones;
-
 };
 
 #endif // USUARIO_H

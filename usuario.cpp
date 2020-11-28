@@ -46,6 +46,17 @@ ListaS<Post> Usuario::DevolverLista()
     return Publicaciones;
 }
 
+void Usuario::AnadirSiguiendo(int ids)
+{
+    siguiendo.append(ids);
+}
+
+void Usuario::addListaSiguiendo(QListWidget *l)
+{
+    for(int i= 0; siguiendo.size();i++)
+        l->addItem(QString::number(siguiendo.at(i)));
+}
+
 void Usuario::SeguirAmigo(QString amigo) // Añade al amigo a la archivo del usuario
 {
     QFile archivo(path+correo+".txt");
