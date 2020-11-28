@@ -1,1 +1,1 @@
-# Desarrollo del trabajo final de algoritmos
+# Desarrollo del trabajo final de algoritmos, la rama donde se encuentra la versión del trabajo es "main"
